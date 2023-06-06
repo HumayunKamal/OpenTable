@@ -12,6 +12,13 @@ const SearchBar = () => {
         type="text"
         placeholder="State, city or town"
         value={location}
+        onKeyDown={(e) => {
+          if (e.key === "Enter") {
+            if (location === "") return;
+            router.push(`/search?city=${location}`);
+            setLocation("");
+          }
+        }}
         onChange={(e) => setLocation(e.target.value)}
       />
       <button
